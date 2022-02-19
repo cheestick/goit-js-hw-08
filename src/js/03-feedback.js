@@ -5,8 +5,8 @@ const messageRef = formRef.querySelector('textarea[name="message"]');
 
 const initialFormObj = JSON.parse(localStorage.getItem(FEEDBACK_STATE_KEY));
 
-emailRef.value = initialFormObj?.email ?? '';
-messageRef.value = initialFormObj?.message ?? '';
+emailRef.value = initialFormObj ? initialFormObj.email : '';
+messageRef.value = initialFormObj ? initialFormObj.message : '';
 
 formRef.addEventListener('input', e => {
   const formElement = e.target;
