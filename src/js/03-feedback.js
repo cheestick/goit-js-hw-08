@@ -10,7 +10,7 @@ messageRef.value = initialFormObj ? initialFormObj.message : '';
 
 formRef.addEventListener('input', e => {
   const formElement = e.target;
-  const lsData = JSON.parse(localStorage.getItem(FEEDBACK_STATE_KEY)) ?? {};
+  const lsData = JSON.parse(localStorage.getItem(FEEDBACK_STATE_KEY)) || {};
 
   lsData[formElement.name] = formElement.value;
   localStorage.setItem(FEEDBACK_STATE_KEY, JSON.stringify(lsData));
@@ -18,7 +18,7 @@ formRef.addEventListener('input', e => {
 
 formRef.addEventListener('submit', e => {
   e.preventDefault();
-  const formObj = JSON.parse(localStorage.getItem(FEEDBACK_STATE_KEY)) ?? {};
+  const formObj = JSON.parse(localStorage.getItem(FEEDBACK_STATE_KEY)) || {};
   console.log(formObj);
   formRef.reset();
   localStorage.removeItem(FEEDBACK_STATE_KEY);
